@@ -24,8 +24,6 @@ def download(url):
     os.rename(out_file, new_file)
 
     # result of success
-
-    print("ok")
     
     return new_file
 
