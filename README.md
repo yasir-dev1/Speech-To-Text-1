@@ -53,7 +53,7 @@ Features
 
 #License
 
-#This project is licensed under the MIT License.
+#This project is licensed under the Apache License.
 #Acknowledgments
 
     This program was developed using the PyQt5 library.
