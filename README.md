@@ -1,4 +1,4 @@
-#Auto Speech To Text Program
+# Auto Speech To Text Program
 
 The Auto Speech To Text program is a graphical user interface (GUI) application built using PyQt5 that enables users to transcribe audio files or YouTube videos into text. It uses speech recognition technology to convert spoken words into written text. The program provides the option to transcribe local audio files or download audio from YouTube.
 Features
@@ -9,7 +9,7 @@ Features
     Copy transcribed text to the clipboard.
     Save transcribed text to a text file.
 
-#Prerequisites
+# Prerequisites
 
     Python 3.x
     PyQt5
@@ -17,7 +17,7 @@ Features
     transcribe (This should be your own module or code for performing the transcription)
     Downloader (This should be your own module or code for downloading audio from YouTube)
 
-#Installation
+# Installation
 
     Install the required packages:
 
@@ -29,7 +29,7 @@ Features
 
     Download and install the Downloader module (or use your own implementation).
 
-#Usage
+# Usage
 
     Run the program:
 
@@ -51,10 +51,10 @@ Features
 
     To save the transcribed text to a file, click the "Save" button and choose a directory.
 
-#License
+# License
 
-#This project is licensed under the Apache License.
-#Acknowledgments
+## This project is licensed under the Apache License.
+## Acknowledgments
 
     This program was developed using the PyQt5 library.
     The speech recognition and transcription are powered by the transcribe module.
