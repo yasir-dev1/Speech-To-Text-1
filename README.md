@@ -5,7 +5,6 @@ Features
 
     Transcribe local audio files (supported formats: .mp3 and .wav).
     Download audio from YouTube and transcribe it.
-    Real-time progress updates during transcription.
     Copy transcribed text to the clipboard.
     Save transcribed text to a text file.
 
