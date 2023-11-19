@@ -46,6 +46,7 @@ class TranscribeThread(QThread):
             self.finished.emit(result)
         if self.subtitle:
             self.Subttile(self.dict)
+            self.finished.emit("")
 
 class GUI(QDialog):
     def __init__(self):
@@ -93,7 +94,6 @@ class GUI(QDialog):
     def open_subtitle_path_dialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.ReadOnly
-        file_filter = "Audio Files (*.mp3 *.wav)"
         dict = QFileDialog.getExistingDirectory(
             self, "Select a directory", ""
         )
