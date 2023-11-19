@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>254</width>
-    <height>410</height>
+    <width>309</width>
+    <height>488</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -22,18 +22,40 @@
     </widget>
    </item>
    <item>
-    <widget class="QRadioButton" name="FileRadio">
-     <property name="text">
-      <string>Upload Audio File</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="raido">
+     <item>
+      <widget class="QRadioButton" name="YoutubeRadio">
+       <property name="text">
+        <string>With Url</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="FileRadio">
+       <property name="text">
+        <string>With File</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
-    <widget class="QRadioButton" name="YoutubeRadio">
-     <property name="text">
-      <string>YouTube URL</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="Check">
+     <item>
+      <widget class="QCheckBox" name="Subtitle">
+       <property name="text">
+        <string>Subtitle Result</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="Text">
+       <property name="text">
+        <string>Text  Result</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QLineEdit" name="inputField">
@@ -70,7 +92,7 @@
      <item>
       <widget class="QPushButton" name="saveButton">
        <property name="text">
-        <string>Save Text</string>
+        <string>Save Result</string>
        </property>
       </widget>
      </item>
