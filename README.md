@@ -51,7 +51,7 @@ To save the transcribed text to a file, click the "Save" button and choose a dir
 
 # License
 
-## This project is licensed under the Apache License.
+## This project is licensed under the MIT License.
 ## Acknowledgments
 
 This program was developed using the PyQt5 library.
