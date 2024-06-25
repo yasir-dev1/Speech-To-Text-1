@@ -1,10 +1,10 @@
 import sys
 import os
-from PyQt5.QtCore import Qt, QObject, QThread, pyqtSignal
-from PyQt5.QtWidgets import (
+from PyQt6.QtCore import Qt, QObject, QThread, pyqtSignal
+from PyQt6.QtWidgets import (
     QApplication, QDialog, QFileDialog, QMainWindow, QMessageBox
 )
-from PyQt5.uic import loadUi
+from PyQt6.uic import loadUi
 import pyperclip
 from transcribe import Transcribe
 from Downloader import download
@@ -13,7 +13,7 @@ class TranscribeThread(QThread):
     progress_update = pyqtSignal(int)
     finished = pyqtSignal(str)
 
-    def __init__(self, file , txt , Youtube , subtitle , Text ,dict):
+    def __init__(self, file, txt, Youtube, subtitle, Text, dict):
         super().__init__()
         self.file = file
         self.txt = txt
@@ -22,20 +22,17 @@ class TranscribeThread(QThread):
         self.text = Text
         self.dict = dict
 
-    def Subttile(self,dict):
+    def Subttile(self, dict):
         srt = Transcribe(self.file).export_subtitles_srt()
         vtt = Transcribe(self.file).export_subtitles_vtt()
 
-        vpath = os.path.join(dict,"Subtitles.vtt")
-        vfile = open(vpath,"a")
-        vfile.write(vtt)
-        vfile.close()
+        vpath = os.path.join(dict, "Subtitles.vtt")
+        with open(vpath, "a") as vfile:
+            vfile.write(vtt)
 
-        spath = os.path.join(dict,"Subtitles.srt")
-        sfile = open(spath,"a")
-        sfile.write(srt)
-        sfile.close()
-
+        spath = os.path.join(dict, "Subtitles.srt")
+        with open(spath, "a") as sfile:
+            sfile.write(srt)
 
     def run(self):
         self.url = self.txt
@@ -76,10 +73,8 @@ class GUI(QDialog):
         if self.Subtitle.isChecked():
             self.open_subtitle_path_dialog()
 
-
-    def open_file_dialog(self,):
-        options = QFileDialog.Options()
-        options |= QFileDialog.ReadOnly
+    def open_file_dialog(self):
+        options = QFileDialog.Option.ReadOnly
         file_filter = "Audio Files (*.mp3 *.wav)"
         file_name, _ = QFileDialog.getOpenFileName(
             self,
@@ -92,38 +87,34 @@ class GUI(QDialog):
         self.inputField.setText(file_name)
     
     def open_subtitle_path_dialog(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.ReadOnly
+        options = QFileDialog.Option.ReadOnly
         dict = QFileDialog.getExistingDirectory(
             self, "Select a directory", ""
         )
         self.dict = dict
-        
 
     def start_transcription(self):
-        
-        
         if not self.file_name and not self.YoutubeRadio.isChecked():
             QMessageBox.critical(
-            self,
-            "Error",
-            "Please select a file or provide a URL."
+                self,
+                "Error",
+                "Please select a file or provide a URL."
             )
             return
 
         self.progressBar.setVisible(True)
         self.convertButton.setEnabled(False)
 
-        self.transcribe_thread = TranscribeThread(self.file_name,self.inputField.text(),self.YoutubeRadio.isChecked(),self.Subtitle.isChecked(),self.Text.isChecked(),self.dict)
+        self.transcribe_thread = TranscribeThread(self.file_name, self.inputField.text(), self.YoutubeRadio.isChecked(), self.Subtitle.isChecked(), self.Text.isChecked(), self.dict)
         self.transcribe_thread.finished.connect(self.on_transcription_finished)
         self.transcribe_thread.start()
 
     def on_transcription_finished(self, result):
         if result == "":
             QMessageBox.critical(
-            self,
-            "Error",
-            "An issue occurred most likely because you exceeded the 5-hour monthly limit."
+                self,
+                "Error",
+                "An issue occurred most likely because you exceeded the 5-hour monthly limit."
             )
             return
         self.outputText.setPlainText(result)
@@ -143,11 +134,10 @@ class GUI(QDialog):
             file_path = os.path.join(selected_directory, "result.txt")
             with open(file_path, "w") as file:
                 file.write(result)
-            
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = GUI()
     window.setWindowTitle("Auto Speech To Text")
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
