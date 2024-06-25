@@ -1,3 +1,0 @@
-assemblyai
-dotenv
-pytube

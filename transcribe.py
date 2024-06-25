@@ -6,7 +6,7 @@ import os
 load_dotenv()
 
 
-api_key = os.getenv("api_key")
+api_key = os.getenv("AAPI")
 
 aai.settings.api_key =  api_key
 
